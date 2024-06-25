@@ -30,6 +30,9 @@ import CSSWriter from './src/integrations/theme-constants-to-css';
 import robotsTxt from "astro-robots-txt";
 import config from "./constants-config.json";
 import partytown from "@astrojs/partytown";
+import expressiveCode from "astro-expressive-code";
+import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections'
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 
 const key_value_from_json = {
   ...config
@@ -45,6 +48,7 @@ function modifyRedirectPaths(redirects: Record<string, string>, basePath: string
   }
   return modifiedRedirects;
 }
+
 // https://astro.build/config
 export default defineConfig({
   site: getSite(),
@@ -57,13 +61,19 @@ export default defineConfig({
   }),
   // astroImageTools,
   buildTimestampRecorder(), CustomIconDownloader(), EntryCacheEr(), PublicNotionCopier(), CSSWriter(), robotsTxt({
-    sitemapBaseFileName: 'sitemap',
+    sitemapBaseFileName: 'sitemap'
   }), partytown({
     // Adds dataLayer.push as a forwarding-event.
     config: {
       forward: ["dataLayer.push"]
     }
-  })],
+  }), expressiveCode({
+      plugins: [
+        // Call the plugin initialization function inside the `plugins` array
+        pluginCollapsibleSections(),
+        pluginLineNumbers()
+      ],
+    })],
   image: {
     domains: ["webmention.io"]
   },
