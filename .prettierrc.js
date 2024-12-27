@@ -1,5 +1,6 @@
 /** @type {import("@types/prettier").Options} */
 module.exports = {
+	endOfLine: "auto",
 	printWidth: 100,
 	semi: true,
 	singleQuote: false,

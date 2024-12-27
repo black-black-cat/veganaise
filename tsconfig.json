@@ -2,7 +2,7 @@
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"verbatimModuleSyntax": true,
+		"verbatimModuleSyntax": false,
 		"lib": ["DOM"],
 		"paths": {
 			"@/*": ["src/*"],

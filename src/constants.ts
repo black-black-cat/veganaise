@@ -11,9 +11,13 @@ import {
 	transformerNotationWordHighlight,
 	transformerNotationErrorLevel,
 } from "@shikijs/transformers";
+import "dotenv/config";
 
 export const NOTION_API_SECRET =
-	import.meta.env.NOTION_API_SECRET || process.env.NOTION_API_SECRET || "";
+	import.meta.env.VITE_NOTION_API_SECRET ||
+	import.meta.env.NOTION_API_SECRET ||
+	process.env.NOTION_API_SECRET ||
+	"";
 export const DATABASE_ID = process.env.DATABASE_ID || key_value_from_json["database-id"] || "";
 export const AUTHOR = key_value_from_json["author"] || "";
 export const TRACKING = key_value_from_json["tracking"] || {};

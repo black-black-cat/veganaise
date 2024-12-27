@@ -755,6 +755,11 @@ export async function getDatabase(): Promise<Database> {
 				Type: res.icon.type,
 				Emoji: res.icon.emoji,
 			};
+		} else if (res.icon.type === "custom_emoji" && "custom_emoji" in res.icon) {
+			icon = {
+				Type: "external",
+				Url: res.icon.custom_emoji?.url,
+			};
 		} else if (res.icon.type === "external" && "external" in res.icon) {
 			icon = {
 				Type: res.icon.type,
